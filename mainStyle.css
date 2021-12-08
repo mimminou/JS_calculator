@@ -1,3 +1,6 @@
+/* The favIcon is licensed under the creative commons 4.0 */
+/* Link : https://creativecommons.org/licenses/by/4.0/ */
+
 .container{
     margin-top: 20px;
     display: flex;
@@ -112,4 +115,8 @@ button:active{
 
 .operation{
     background-color: lightsalmon;
+}
+
+.footer{
+    text-align: center;
 }
