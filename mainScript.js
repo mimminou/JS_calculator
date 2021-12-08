@@ -2,7 +2,7 @@
 // PLEASE DO NOT FOLLOW THIS CODE TO MAKE A WORKING CALCULATOR, IT WORKS BUT ONLY BECAUSE OF
 // TRIAL AND ERROR, I DID NOT FOLLOW ANY GUIDELINES OR ALGORITHMS ON HOW TO MAKE A PROPER CALCULATOR.
 
-
+// Some of the UI elements ( Mainly the layout of buttons ) was inspired by " michalosman " calculator solution. Good job.
 
 
 //UI elements
