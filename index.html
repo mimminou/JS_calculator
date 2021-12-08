@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="mainStyle.css" />
+		<script src="mainScript.js" defer></script>
+		<title>myJS Calculator</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="calculator_body">
+				<!-- Insert Screen here -->
+				<div class="Screen">
+                    <span class="screenContent"></span> 
+                </div>
+				<!-- Insert Clear / Backspace here -->
+				<div class="Clear_BKSPC_container">
+                    <button class="operation but" id="switchSign">+/-</button>
+					<button class="clearButton but" id="clear">Clear</button>
+					<button class="backspaceButton but" id="delete">Delete</button>
+
+				</div>
+
+                <!--? Create Buttons container -->
+				<div class="buttonsContainer">
+					<!-- Insert row number 4 -->
+					<div class="row4 numRow">
+						<button class="number nButton" id="7">7</button>
+						<button class="number nButton" id="8">8</button>
+						<button class="number nButton" id="9">9</button>
+						<button class="operation nButton" id="/">÷</button>
+					</div>
+					<!-- Insert row number 3 -->
+					<div class="row3 numRow">
+						<button class="number nButton" id="4">4</button>
+						<button class="number nButton" id="5">5</button>
+						<button class="number nButton" id="6">6</button>
+						<button class="operation nButton" id="*">×</button>
+					</div>
+					<!-- Insert row number 2 -->
+					<div class="row2 numRow">
+						<button class="number nButton" id="1">1</button>
+                        <button class="number nButton" id="2">2</button>
+						<button class="number nButton" id="3">3</button>
+						<button class="operation nButton" id="-">-</button>
+					</div>
+					<!-- Insert row number 1 -->
+					<div class="row1 numRow">
+						<button class="number nButton" id=".">.</button>
+						<button class="number nButton" id="0">0</button>
+						<button class="operation nButton" id="=">=</button>
+						<button class="operation nButton" id="+">+</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
