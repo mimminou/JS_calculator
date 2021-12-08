@@ -26,6 +26,7 @@ function handleButtonClick(currentTarget){
         lastDoneOperation = undefined;
         lastClickedButtonType = undefined;
         operationResult = undefined;
+        mathExpression= undefined;
         numberA = undefined;
         numberB = undefined;
     }
@@ -63,6 +64,9 @@ function handleButtonClick(currentTarget){
             else{
                 screenContent.textContent=screenContent.textContent+targetId;
                 if(lastClickedButtonType=="operation"){
+                    if(lastDoneOperation=="="){
+                        ClearButton.click();
+                    }
                     screenContent.textContent="";
                     screenContent.textContent=screenContent.textContent+targetId;
                 }
@@ -83,7 +87,10 @@ function handleButtonClick(currentTarget){
                         numberB = parseFloat(screenContent.textContent);
                         console.log("B VAR IS EMPTY, Filling it with : " +  numberB);
                     }
-                    calculationLogic(numberA, numberB, lastDoneOperation);
+                    if(calculationLogic(numberA, numberB, lastDoneOperation)=="DIV_0"){
+                        ClearButton.click();
+                        break;
+                    }
                     lastDoneOperation=targetId;
                     lastClickedButtonType="operation";
                 }
@@ -101,7 +108,10 @@ function handleButtonClick(currentTarget){
                         numberB = parseFloat(screenContent.textContent);
                         console.log("B VAR IS EMPTY, Filling it with : " +  numberB);
                     }
-                    calculationLogic(numberA, numberB, lastDoneOperation);
+                    if(calculationLogic(numberA, numberB, lastDoneOperation)=="DIV_0"){
+                        ClearButton.click();
+                        break;
+                    }
                     lastDoneOperation=targetId;
                     lastClickedButtonType="operation";
                 }
@@ -120,7 +130,10 @@ function handleButtonClick(currentTarget){
                         numberB = parseFloat(screenContent.textContent);
                         console.log("B VAR IS EMPTY, Filling it with : " +  numberB);
                     }
-                    calculationLogic(numberA, numberB, lastDoneOperation);
+                    if(calculationLogic(numberA, numberB, lastDoneOperation)=="DIV_0"){
+                        ClearButton.click();
+                        break;
+                    }
                     lastDoneOperation=targetId;
                     lastClickedButtonType="operation";
                 }
@@ -139,7 +152,10 @@ function handleButtonClick(currentTarget){
                         numberB = parseFloat(screenContent.textContent);
                         console.log("B VAR IS EMPTY, Filling it with : " +  numberB);
                     }
-                    calculationLogic(numberA, numberB, lastDoneOperation);
+                    if(calculationLogic(numberA, numberB, lastDoneOperation)=="DIV_0"){
+                        ClearButton.click();
+                        break;
+                    }
                     lastDoneOperation=targetId;
                     lastClickedButtonType="operation";
                 }
@@ -158,34 +174,15 @@ function handleButtonClick(currentTarget){
                         numberB = parseFloat(screenContent.textContent);
                         console.log("B VAR IS EMPTY, Filling it with : " +  numberB);
                     }
-                    calculationLogic(numberA, numberB, lastDoneOperation);
+                    if(calculationLogic(numberA, numberB, lastDoneOperation)=="DIV_0"){
+                        ClearButton.click();
+                        break;
+                    }
                     lastDoneOperation=targetId;
                     lastClickedButtonType="operation";
                 }
                     break;
 
-                    // mathExpression = parseFloat(numberA) + lastDoneOperation + parseFloat(numberB);
-                    // console.log(mathExpression);
-                    // if(lastDoneOperation=="="){
-                    //     console.log("stop spamming the equal sign you piece of trash user");
-                    // }
-                    // else if(evaluate(mathExpression)){
-                    //     operationResult = parseFloat(SolveExpression(numberA,numberB,lastDoneOperation).toFixed(10));
-                    //     if(operationResult!="DONE"){
-                    //         screenContent.textContent=operationResult;
-                    //         numberA = operationResult;
-                    //         console.log(operationResult);
-                    //     }
-                    // }
-                    // else{
-                    //     console.log("Invalid math Expression");
-                    //     // ClearButton.click();
-                    //     // screenContent.textContent="Invalid Math Expression";
-                    // }
-
-                    // lastDoneOperation=targetId;
-                    // lastClickedButtonType="operation";
-                    // break;
             }
         }
     }
@@ -206,7 +203,16 @@ function calculationLogic(){
         console.log("Number B is : " + numberB);
         mathExpression = parseFloat(numberA) + lastDoneOperation + parseFloat(numberB);
         if(evaluate(mathExpression)){
-            operationResult = parseFloat(SolveExpression(numberA,numberB,lastDoneOperation).toFixed(10));
+            operationResult = parseFloat(SolveExpression(numberA,numberB,lastDoneOperation));
+            if(!isNaN(operationResult)){
+                operationResult = parseFloat(operationResult.toFixed(10));
+            }
+            else{
+                //? this is a hack to reset calculator after division by 0
+                alert("Stop dividing by 0, do you want to create a blackhole ?")
+                return "DIV_0";
+
+            }
             screenContent.textContent=operationResult;
             if(operationResult!="DONE"){
                 screenContent.textContent=operationResult;
@@ -215,6 +221,7 @@ function calculationLogic(){
                 console.log(operationResult);
             }
         mathExpression=undefined;
+        
         }
         else{
             console.log(mathExpression);
@@ -273,9 +280,3 @@ function division(a,b){
 function switchSignFunction(x){
     return parseFloat(-x);
 }
-
-// console.log("Addition :  " + addition(a, b));
-// console.log("Substration :  " + substraction(a, b));
-// console.log("Multiplication :  " +multiplication(a, b));
-// console.log("Division :  " + division(a, b));
-// console.log("reversed Number :  " + reversePlusMinus(a));
