@@ -1,3 +1,10 @@
+// THIS IS A VERY BAD SOLUTION, BECAUSE THE ONLY THING I RESEARCHED ONLINE WAS UI ELEMENTS,
+// PLEASE DO NOT FOLLOW THIS CODE TO MAKE A WORKING CALCULATOR, IT WORKS BUT ONLY BECAUSE OF
+// TRIAL AND ERROR, I DID NOT FOLLOW ANY GUIDELINES OR ALGORITHMS ON HOW TO MAKE A PROPER CALCULATOR.
+
+
+
+
 //UI elements
 const screenContent = document.querySelector(".screenContent");
 const buttons = document.querySelectorAll("Button");
@@ -63,6 +70,19 @@ function handleButtonClick(currentTarget){
                 }
             }
             // -----------------------------------
+            
+            else if(targetId=="."){         //? Handles the decimal dot
+                if(!screenContent.textContent.includes(".")){
+                    if(lastClickedButtonType=="operation"){
+                        screenContent.textContent="0.";
+                    }
+                    else{
+                        screenContent.textContent= screenContent.textContent+".";
+                    }
+                }
+
+            }
+
             else{
                 screenContent.textContent=screenContent.textContent+targetId;
                 if(lastClickedButtonType=="operation"){
@@ -228,8 +248,6 @@ function calculationLogic(){
         else{
             console.log(mathExpression);
             console.log("Invalid math Expression");
-            // ClearButton.click();
-            // screenContent.textContent="Invalid Math Expression";
         }
     }
 }
