@@ -31,11 +31,13 @@ function handleButtonClick(currentTarget){
         numberB = undefined;
     }
     else if(targetId=="delete"){
-        screenContent.textContent = screenContent.textContent.slice(0,-1);
-        if(screenContent.textContent.length==0){
-            screenContent.textContent=0;
+        if(lastClickedButtonType=="number"){
+            screenContent.textContent = screenContent.textContent.slice(0,-1);
+            if(screenContent.textContent.length==0){
+                screenContent.textContent=0;
+            }
+            console.log("Delete was pressed");
         }
-        console.log("Delete was pressed");
         
     }
     else if(targetId=="switchSign"){
